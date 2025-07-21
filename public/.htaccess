@@ -1,0 +1,21 @@
+# Protect front controller from direct access
+<Files index.php>
+    Order Deny,Allow
+    Deny from all
+    Allow from env=REDIRECT_STATUS
+</Files>
+
+# Turn on URL rewriting
+RewriteEngine On
+
+# Set the base path
+# RewriteBase /
+
+# Protect the system and application folders
+RewriteRule ^(app|system|writable)($|/) /index.php/$1 [L]
+
+# Allow assets to be accessed directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# Send all other requests to the front controller
+RewriteRule ^(.*)$ index.php/$1 [L]
