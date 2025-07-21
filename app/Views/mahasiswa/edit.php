@@ -9,7 +9,7 @@
     <div class="container mt-5">
         <h1><?= $title; ?></h1>
         <hr>
-        <form action="/mahasiswa/<?= $mahasiswa['id']; ?>" method="post">
+        <form action="/mahasiswa/update/<?= $mahasiswa['id']; ?>" method="post">
             <?= csrf_field(); ?>
             <div class="mb-3">
                 <label for="nim" class="form-label">NIM</label>
